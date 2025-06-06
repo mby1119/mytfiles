@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.Musicmapper">
+    <select id="selectall" resultType="com.example.entity.Music">
+        select * from `music`
+        <where>
+            <if test="singer != null">singer like concat('%', #{singer},'%')</if>
+            <if test="name != null">and name like concat('%', #{name},'%')</if>
+        </where>
+        order by id desc # 最新数据放上边
+    </select>
+
+
+    <insert id="insert">
+        insert into music (name,audiourl,singer,album,cover,time)
+        values(#{name},#{audiourl},#{singer},#{album},#{cover},#{time})
+    </insert>
+
+    <insert id="play">
+        insert into playlist (name,audiourl,singer,album,cover,time)
+        values(#{name},#{audiourl},#{singer},#{album},#{cover},#{time})
+    </insert>
+
+    <update id="updateById">
+        update music set name = #{name},audiourl = #{audiourl},
+                         singer = #{singer},album = #{album},cover = #{cover},time =#{time}
+        where id=#{id}
+    </update>
+
+</mapper>
