@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.common.Result;
 import com.example.entity.Music;
+import com.example.server.Fileserver;
 import com.example.server.Musicserver;
 import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
@@ -15,6 +16,9 @@ public class Musiccontroller {
 
     @Resource
     Musicserver musicserver;
+
+    @Resource
+    Fileserver fileserver;
 
     @PostMapping("/add")
     public Result add(@RequestBody Music music) {
@@ -30,12 +34,14 @@ public class Musiccontroller {
 
     @PutMapping("/update")
     public Result update(@RequestBody Music music) {
+        fileserver.deleteFile(music.getId());
         musicserver.update(music);
         return Result.success();
     }
 
     @DeleteMapping("/delete/{id}")
     public Result delete(@PathVariable Integer id) {
+        fileserver.deleteFile(id);
         musicserver.deleteById(id);
         return Result.success();
     }

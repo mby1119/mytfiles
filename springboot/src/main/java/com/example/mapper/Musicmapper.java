@@ -24,4 +24,7 @@ public interface Musicmapper {
     @Select("select * from `music` where id = #{id}")
     Music selectById(String id);
 
+    @Select("select * from `music` where id = #{id}")
+    Music selecturlById(Integer id);
+
 }

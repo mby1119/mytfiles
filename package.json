@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "@fortawesome/vue-fontawesome": "^3.0.8"
+    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "spark-md5": "^3.0.2"
+  },
+  "devDependencies": {
+    "less": "^4.3.0"
   }
 }

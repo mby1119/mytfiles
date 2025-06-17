@@ -19,8 +19,8 @@
     </insert>
 
     <insert id="play">
-        insert into playlist (name,audiourl,singer,album,cover,time)
-        values(#{name},#{audiourl},#{singer},#{album},#{cover},#{time})
+        insert into playlist (musicid)
+        values(#{id})
     </insert>
 
     <update id="updateById">

@@ -8,6 +8,7 @@ public class Playlist {
     private String album;
     private String cover;
     private String time;
+    private Integer musicid;
 
     public Integer getId() {
         return id;
@@ -63,5 +64,13 @@ public class Playlist {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public Integer getMusicid() {
+        return musicid;
+    }
+
+    public void setMusicid(Integer musicid) {
+        this.musicid = musicid;
     }
 }

@@ -8,7 +8,9 @@ const router = createRouter({
             children:[
                 {path:'home',meta:{name:'主页'},component:()=>import('../views/home.vue'),},
                 {path:'mymusic',meta:{name:'我的音乐'},component:()=>import('../views/mymusic.vue'),},
-                {path:'setting',meta:{name:'设置'},component:()=>import('../views/setting.vue'),},
+                {path:'order',meta:{name:'订单'},component:()=>import('../views/order.vue'),},
+                {path:'setting',meta:{name:'聊天'},component:()=>import('../views/setting.vue'),},
+                {path:'upload',meta:{name:'聊天'},component:()=>import('../views/upload.vue'),},
 
             ]
         },

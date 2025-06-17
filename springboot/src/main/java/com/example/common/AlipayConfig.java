@@ -1,0 +1,49 @@
+package com.example.common;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+
+@Component
+@ConfigurationProperties(prefix = "alipay")
+public class AlipayConfig {
+    private String appId;
+    private String appPrivateKey;
+    private String alipayPublicKey;
+    private String notifyUrl;
+
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
+
+    public String getAppPrivateKey() {
+        appPrivateKey="MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCjox9dB1FBxf48OJCEOHpUXHnpbPZxB+nmvMTVyoJ3I82hzcdE/buPnN1Q4C/myFtZy9iSXphr/tBa8Oqv+wPydFQVRjWa4IhS/UtBgIVYF8j+MqacSfNwuTB56URYonGO5+n/bJopj9Mm8PUcsZURR2IQi75Z5teYZFUGf0bUsYiojTLJYBrg+J8/A/PxUOXW+zGlC4rvX1IckypN+zZR6eIfLg/E0Qrj6I7yXT9D8R3rBRD9VKmhGOPxiuD3goVr75dDykIaimeTniwg9H+M4u5jvsWuraM15zlVCYa5l5OublTETyfCbvuQKFfDQMbPJnEyRNcEcKg3cxbtFm1jAgMBAAECggEAdkYsIChu0fSSuuJDil3sBVfGAjLwuWf35v+f4cr6m7R0J7Q9iJ9A1x+RU6iG1u8QIApXogvfbYeC/4hMiSAMjU0JjUru6d/KiPltUI3dU3v1mc3wYNyOqXYhFKzG6q2XGKyFlEnh75J2Expsf+3XCeMnfUAUOJTCVfKHBigugQIc4x41f69sGoYBgy3zhShJG8o8LK9PnrjDC67dQZPh/ACrm2LGAxPmAxFk+wFB5dNPNNqSYAUqI9oCZidig83V7LT3QlchNRC+yjJdotr70HoFF4uVcfvjaedcr0d6nuhsmnZeCOIihfKElWej7ZKzW2aEZz26Pc2WoOVDTEuUyQKBgQDU59K2XhS3mPimtjnW4Epu+jq01CGG0QNvBslBEgrILZCQCy0JQUPli1RNYPz7Z2QvHKlkSRdcboo4G936UgXRcFotNrEP9YuWI+FWZHxPpuoHH8TdxIcXfSR1vU+QOim7rObkcKszDwOQh9Vzv97qhaJ2eRqea0ALD/EARKy23wKBgQDEwllow5NPeBZjVEnzSOAJqTmGMtE1VgnGMN7b2Fi3KqQ3c1GoGEOdCXZU8iEcK9vQoe9wnW9695K3vrrFOCY1G0wQ8/MiogVBaPyaIU/UOKvE3neum+SzvKMPC469PH19+ZyfCnKyuqqppIUZ2FahbXMvAxBN8r8sdEcnGE+t/QKBgQDU5ijoYnX3Dkn/c5OtEsZ76U/RSZtpFBOJ79BKeH89o4q+794ONixuGwCnDAiOYdpl3hRpi0mIDaW76+nyihj1UZNrSRiQK+t0rNaFrKA+ilvV2efkF8U7MNHHxxIL2I2o9YJCB4S63xWibqJ9R+3iuNU4AWwj5H27UiqeKQ5JIwKBgQCpfJRR5y5MpS/7zg6Jb3v1Nn0juUB3Ri7TNyOxknIRDb05Oq/bMVOEwTLaR1v4DVujIurDQgpWjU4n0zbFTfGzi1kBvXHxokkOqCX3irxeHZbw1YWYthbSMKrw+c6x+ZpL2qlsYi6dAKijyuEQe0dcdJBkransyy6cV2k3Jvzz7QKBgQCra6T3LoEl072BOeR9C6dQI4IFknDHlkvoJcabWmklLA6eixSrLtJeYxJam/LvT+zriceiJ1lSv19g4v40C7h1/y3M8NZ02m5eQXWV3Bns0g+XW/8ccSlevaD1baPHCc8p8sANzRpkr4k0mFcHtgwzIYwLZHGd1P7PKlL/PoVBIw==";
+        return appPrivateKey;
+    }
+
+    public void setAppPrivateKey(String appPrivateKey) {
+        this.appPrivateKey = appPrivateKey;
+    }
+
+    public String getAlipayPublicKey() {
+        return alipayPublicKey;
+    }
+
+    public void setAlipayPublicKey(String alipayPublicKey) {
+        this.alipayPublicKey = alipayPublicKey;
+    }
+
+    public String getNotifyUrl() {
+        return notifyUrl;
+    }
+
+    public void setNotifyUrl(String notifyUrl) {
+        this.notifyUrl = notifyUrl;
+    }
+}
+

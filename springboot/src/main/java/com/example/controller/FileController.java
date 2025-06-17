@@ -3,14 +3,19 @@ package com.example.controller;
 import cn.hutool.core.io.FileUtil;
 import com.example.common.Result;
 import com.example.exception.CustomerException;
+import com.example.server.Fileserver;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/files")
 public class FileController {
+
+    @Autowired
+    private Fileserver fileserver;
 
     @GetMapping("/download/{fileName}")
     public void download(@PathVariable String fileName,HttpServletResponse response) throws Exception {
@@ -42,15 +47,5 @@ public class FileController {
         FileUtil.writeBytes(bytes,filePath+filename);
         String url="http://localhost:8081/files/download/"+filename;
         return Result.success(url);
-    }
-
-    @DeleteMapping("/delete/{fileName}")
-    public void delete(@PathVariable String fileName){
-        String filePath = System.getProperty("user.dir")+"/files/";//获取当前项目根路径
-        String realPath = filePath + fileName;//最终目录
-        boolean exist = FileUtil.exist(realPath);
-        if(!exist){
-            throw  new CustomerException("no file");
-        }
     }
 }

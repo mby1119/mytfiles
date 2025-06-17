@@ -23,7 +23,8 @@
         <el-table-column label="操作" >
           <template #default="scope">
             <el-button type="primary" icon="VideoPlay" circle @click="get_info(scope.row)"></el-button>
-            <el-button type="primary" icon="Edit" circle @click="handleEdit(scope.row)"></el-button>
+            <!--修改
+            <el-button type="primary" icon="Edit" circle @click="handleEdit(scope.row)"></el-button>-->
             <el-button type="danger" icon="Delete" circle @click="del(scope.row.id)"></el-button>
           </template>
         </el-table-column>
@@ -51,7 +52,7 @@
           <el-upload
               action="http://localhost:8081/files/upload"
               :on-success="mp3FileSuccess">
-            <el-button type="primary">上传封面</el-button>
+            <el-button type="primary">上传MP3文件</el-button>
           </el-upload>
         </el-form-item>
       </el-form>
@@ -76,15 +77,20 @@
 </template>
 
 <script setup>
+import { defineStore } from 'pinia'
 import {Search} from "@element-plus/icons-vue";
 import {reactive,ref} from "vue";
 import request from "../utils/request.js";
 import {ElMessage} from "element-plus";
 import { ElMessageBox } from 'element-plus'
+import {useCounterStore} from "../utils/star.js";
+
 
 const formRef =ref()
+const store = useCounterStore()
 
 const  data=reactive({
+  playfirst:0,
   pageNum:1,
   pageSize:4,
   total:6,
@@ -148,7 +154,10 @@ const get_info=(row)=>{
   data.form=JSON.parse(JSON.stringify(row))
   request.post('/music/play', data.form).then(res => {
     if (res.code === '200') {
+     /*页面刷新*/
       window.location.reload()
+      data.playfirst=data.form.id;
+      store.setMessage('qw');
       ElMessage.success('success')
     } else {
       ElMessage.error(res.msg)
@@ -156,13 +165,16 @@ const get_info=(row)=>{
   })
 }
 
+
+
+/*暂时不用修改
 const update = () => {
   formRef.value.validate((valid) =>{
     if (valid) {
       request.put('/music/update', data.form).then(res => {
         if (res.code === '200') {
           data.formVIsible = false
-          ElMessage.success('success')
+          ElMessage.success('success up')
           load()
         } else {
           ElMessage.error(res.msg)
@@ -170,13 +182,13 @@ const update = () => {
       })
     }
   })
-}
+}*/
 
 const del = (id) => {
   ElMessageBox.confirm('sure?','sure',{type:'warning'}).then(res =>{
     request.delete('/music/delete/'+id).then(res => {
       if (res.code === '200') {
-        ElMessage.success('success')
+        ElMessage.success('success de')
         load()
       } else {
         ElMessage.error(res.msg)

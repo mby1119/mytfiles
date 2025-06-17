@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.Ordermapper">
+
+    <select id="selectall" resultType="com.example.entity.Order">
+        select * from `ddorder`
+        order by id desc # 最新数据放上边
+    </select>
+
+    <insert id="insert">
+        insert into ddorder (name,total) values (#{name},#{total})
+    </insert>
+
+    <update id="update">
+        update ddorder set paytime =(#{paytime}) where id=#{id}
+    </update>
+</mapper>

@@ -19,19 +19,21 @@
         <!--body-->
         <el-container>
           <!--left-->
-          <el-aside style="width: 150px; background: rgba(255, 255, 255, 0.7); border-radius: 0  0 0 10px;" >
-            <el-menu router :default-active="router.currentRoute.value.path">
+          <el-aside style="width: 150px; background: rgba(255, 255, 255, 0.6); border-radius: 0  0 0 10px;" >
+            <el-menu style="background: rgba(255, 255, 255, 0.6)" router :default-active="router.currentRoute.value.path">
               <el-menu-item index="/main/home">主页</el-menu-item>
               <el-menu-item index="/main/mymusic">我的音乐</el-menu-item>
-              <el-menu-item index="/main/setting">设置</el-menu-item>
+              <el-menu-item index="/main/order">订单</el-menu-item>
+              <el-menu-item index="/main/setting">聊天</el-menu-item>
+              <el-menu-item index="/main/upload">file</el-menu-item>
             </el-menu>
           </el-aside>
           <!--right-->
           <el-container>
-            <el-main style="background-color: deepskyblue">
+            <el-main style="background: rgba(255, 255, 255, 0.6)">
               <RouterView/>
             </el-main>
-            <el-footer style="padding: 0;height: 120px">
+            <el-footer style="padding: 0;height: 120px;background: rgba(255, 255, 255, 0.6)">
               <mainfooter></mainfooter>
             </el-footer>
           </el-container>
@@ -73,7 +75,8 @@ const currentBg = ref(bg1); // 默认背景
   display: flex;
   margin: 12vh auto 0;
   border-radius: 10px;
-  background-color: #747bff;
+  background: rgba(135, 206, 235, 0.6); /* 半透明背景 */
+  backdrop-filter: blur(1px); /* 关键：毛玻璃效果 */
 }
 .controls {
   position: fixed;

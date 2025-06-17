@@ -1,6 +1,5 @@
 package com.example.server;
 
-import cn.hutool.core.util.StrUtil;
 import com.example.entity.Music;
 import com.example.entity.Playlist;
 import com.example.exception.CustomerException;
@@ -19,7 +18,6 @@ public class Musicserver {
 
     @Resource
     Musicmapper musicmapper;
-    Playlistmapper playlistmapper;
 
     @Autowired
     private Playlistmapper Playlistmapper;
@@ -39,9 +37,9 @@ public class Musicserver {
     }
 
     public void play(Music music) {
-        Playlist dbuser=Playlistmapper.selectByName(music.getName());
-        if(dbuser != null){
-            throw  new CustomerException("歌曲已在播放列表");
+        Playlist name = Playlistmapper.selectByName(music.getId().toString());
+        if (name != null) {
+            throw new CustomerException("该歌曲在播放列表");
         }
         musicmapper.play(music);
     }

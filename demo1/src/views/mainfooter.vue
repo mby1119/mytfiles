@@ -45,6 +45,9 @@
 import {reactive,ref} from "vue";
 import request from "../utils/request.js";
 import {ElMessage, ElMessageBox} from "element-plus";
+import {useCounterStore} from "../utils/star.js";
+
+const store = useCounterStore()
 
 const  data=reactive({
   playing:true,
@@ -80,6 +83,7 @@ playload();
 const  audioElement =ref(null);
 const isplay=ref(false);
 const isplays=ref("album-cover2");
+
 
 const open_play=()=>{
   audioElement.value.play();
@@ -148,10 +152,10 @@ const re_play=async()=>{
 const get_info=async($index)=>{
   try {
     data.sum=$index;
-    console.log($index);
     isplays.value="album-cover1";
     data.formVIsible=false;
     playload();
+    console.log(store.message+' 123');
     // 等待音频元数据加载完成
     await new Promise((resolve) => {
       audioElement.value.addEventListener('loadedmetadata', resolve);
@@ -187,7 +191,7 @@ const del = (id) => {
   align-items: center;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 0 0 10px 0;
   gap: 20px;
 }

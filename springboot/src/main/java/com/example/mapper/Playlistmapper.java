@@ -15,7 +15,7 @@ public interface Playlistmapper {
     @Select("select * from `playlist` where id = #{id}")
     Playlist selectById(String id);
 
-    @Select("select * from `playlist` where name = #{name}")
-    Playlist selectByName(String name);
+    @Select("select id from playlist where musicid = #{id}")
+    Playlist selectByName(String id);
 
 }
