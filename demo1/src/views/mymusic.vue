@@ -25,6 +25,7 @@
             <el-button type="primary" icon="VideoPlay" circle @click="get_info(scope.row)"></el-button>
             <!--修改
             <el-button type="primary" icon="Edit" circle @click="handleEdit(scope.row)"></el-button>-->
+            <el-button type="primary" icon="Edit" circle @click="handleEditplay(scope.row)"></el-button>
             <el-button type="danger" icon="Delete" circle @click="del(scope.row.id)"></el-button>
           </template>
         </el-table-column>
@@ -77,17 +78,20 @@
 </template>
 
 <script setup>
-import { defineStore } from 'pinia'
 import {Search} from "@element-plus/icons-vue";
 import {reactive,ref} from "vue";
 import request from "../utils/request.js";
 import {ElMessage} from "element-plus";
 import { ElMessageBox } from 'element-plus'
-import {useCounterStore} from "../utils/star.js";
+import { useDataStore } from '../stores/dataStore';
+import { useRouter } from 'vue-router';
+
+
 
 
 const formRef =ref()
-const store = useCounterStore()
+const dataStore = useDataStore();
+const router = useRouter();
 
 const  data=reactive({
   playfirst:0,
@@ -157,7 +161,6 @@ const get_info=(row)=>{
      /*页面刷新*/
       window.location.reload()
       data.playfirst=data.form.id;
-      store.setMessage('qw');
       ElMessage.success('success')
     } else {
       ElMessage.error(res.msg)
@@ -202,9 +205,26 @@ const handleEdit=(row)=>{
   data.formVIsible=true
 }
 
+/*使用URL参数传递数据*/
+const handleEditplay=(row)=>{
+  const product = {
+    id: row.id,
+  };
+
+  // 将对象转换为URL参数
+  const params = new URLSearchParams();
+  for (const key in product) {
+    params.append(key, product[key]);
+  }
+
+  window.open(`http://localhost:5173/musicplay?${params.toString()}`, '_blank');
+}
+
+/*文件删除*/
 const coverFileSuccess = (res) => {
   data.form.cover=res.data
 }
+
 const mp3FileSuccess = (res) => {
   data.form.audiourl=res.data
 }

@@ -16,6 +16,7 @@ const router = createRouter({
         },
         {path: '/notFouund', component: import('../views/404.vue'),},
         {path: '/:pathMatch(.*)', redirect:'/notFouund',},
+        {path: '/musicplay',component:()=>import('../views/musicplay.vue'),},
     ],
 })
 
